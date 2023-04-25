@@ -14,9 +14,24 @@ xv6-public, 可以正常编译，
 
 安装qemu, sudo apt install qemu-system-x86,
 
-## compiler toolchain,
+## compiler toolchain
 
 直接运行make就可以了!
 
+```shell
+make qemu
+make qemu-nox // run it wiht following frag?
+make qemu-nox-gdb // with gdb enabled
 
-##
+# quit qemu container, Ctrl-a c
+# type quit to exit qemu
+
+```
+
+## add custom c files
+
+复制wc.c
+
+添加到makefile里面去,
+
+
