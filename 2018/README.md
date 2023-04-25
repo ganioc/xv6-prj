@@ -8,11 +8,41 @@ jos, What is the jos project?
 
 xv6-public, 可以正常编译，
 
+### What is jos?
+
+The name of the operating system built in the 6.828 course. Fork, exec, implemented in an exokernel style. In the user-level library instead of in the kernel.
+
+Lectures, readings, and a sequence of programming labs.
+
+The 1st block introduces an operating system, xv6, a re-implementation of Unix Version 6, which is developed in 1970s.
+
+The 2nd block of lectures covers important operating systems concepts invented after Unix v6. Implement some of the newer concepts in your operating system.
+
+The major parts of JOS  operating systems are: 
+
+1. Booting
+2. Memory management
+3. User environment
+4. Preemptive multitasking
+5. File system, spawn and shell
+6. Network driver
+
+
+
+
+
 ## Tools used in 6.828
 
 ## QEMU
 
 安装qemu, sudo apt install qemu-system-x86,
+
+
+```shell
+sudo apt install qemu qemu-system-x86
+sudo apt install libc6-dev:i386
+
+```
 
 ## compiler toolchain
 
@@ -27,6 +57,79 @@ make qemu-nox-gdb // with gdb enabled
 # type quit to exit qemu
 
 ```
+
+qemu的命令
+
+### qemu-img
+
+    qemu-img is used to convert various file systems used by hypervisors like Xen, KVM, VMware, VirtualBox. to format guest images, add additional storage devices and network storage. The 
+
+```
+create
+check
+convert
+info
+snapshot
+commit # apply to an existing disk image
+rebase, // create a new base image based on an existing disk image
+resize, // to increase or decrease the size of an existing disk image
+
+```
+
+Supported disk formats,
+
+```
+raw, default image format, 
+qcow2,  QEMU image format, most versatile format,
+vmdk,  VMware compatible image format,
+cloop, only to reuse directly compressed CD-ROM images, e.g. in Knoppix CD-ROMs, It is Linux compressed Loop image
+
+```
+
+例子:
+
+```shell
+qemu-img create -f raw ubuntu.img 10G
+
+qemu-img info ubuntu.img
+
+# To install OS to the created disk image
+# Need installation medium such as cdrom or ISO image file,
+qemu-system-x86_64 -m 512 -hda ~/path/virt/arch.qcow2 -cdrom ~/path/iso/CentOS-7-x86_64.iso -enable-kvm
+
+
+```
+
+### qemu-io
+To exercise the QEMU I/O path.
+
+
+
+### qemu-nbd
+Network block device. 
+
+### qemu-pr-helper
+Persistent reservation helper.
+zuowei作为一个服务，支持一个持久存储功能。
+
+
+### qemu-storage-daemon
+
+
+### qemu-system-i386
+
+### qemu-system-x86_64
+
+### qemu-system-x86_64-microvm
+microvm, virtual platform, a machine type inspired by Firecracker,
+
+it's a minimalist machine type without PCI nor ACPI support, designed for short-lived guests. microvm also establishes a baseline for benchmarking and optimizaing both QEMU and guest operating system. Optimized for both boot time and footpritn,
+
+
+### qemu-system-x86_64-spice
+Spice protocol for virtual desktops.
+
+
 
 ## add custom c files
 
