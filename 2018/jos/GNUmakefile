@@ -173,6 +173,10 @@ qemu-nox-gdb: $(IMAGES) pre-qemu
 	@echo "***"
 	$(QEMU) -nographic $(QEMUOPTS) -S
 
+print-gccprefix:
+	@echo "get gccprefix:"
+	@echo ${GCCPREFIX}
+
 print-qemu:
 	@echo $(QEMU)
 

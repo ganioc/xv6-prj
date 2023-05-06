@@ -27,8 +27,33 @@ The major parts of JOS  operating systems are:
 5. File system, spawn and shell
 6. Network driver
 
+### Compile jos project
+
+```shell
+make V=1
+ld -o obj/kern/kernel -m elf_i386 -T kern/kernel.ld -nostdlib obj/kern/entry.o obj/kern/entrypgdir.o obj/kern/init.o obj/kern/console.o obj/kern/monitor.o obj/kern/printf.o obj/kern/kdebug.o  obj/kern/printfmt.o  obj/kern/readline.o  obj/kern/string.o /usr/lib/gcc/x86_64-linux-gnu/11/libgcc.a -b binary 
+
+```
+
+报错了:
+
+```shell
+ld: warning: section `.bss' type changed to PROGBITS
+ld: obj/kern/printfmt.o: in function `printnum':
+# Errors
+lib/printfmt.c:41: undefined reference to `__udivdi3'
+ld: lib/printfmt.c:49: undefined reference to `__umoddi3'
+
+# 链接时, 报错。缺少求余和除法操作,
+# 可是查找libgcc.a后发现里面确实有上述2个函数,这是为什么呢？
+安装32bit libgcc.a,
+sudo apt install ia32-libs
+apt-get install gcc-4.8-multilib
+sudo apt install gcc-multilib g++-multilib
+# libgcc.a是干什么的呢？
 
 
+```
 
 
 ## Tools used in 6.828
@@ -63,6 +88,7 @@ qemu的命令
 ### qemu-img
 
     qemu-img is used to convert various file systems used by hypervisors like Xen, KVM, VMware, VirtualBox. to format guest images, add additional storage devices and network storage. The 
+
 
 ```
 create
