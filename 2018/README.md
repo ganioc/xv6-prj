@@ -18,7 +18,7 @@ The 1st block introduces an operating system, xv6, a re-implementation of Unix V
 
 The 2nd block of lectures covers important operating systems concepts invented after Unix v6. Implement some of the newer concepts in your operating system.
 
-The major parts of JOS  operating systems are: 
+The major parts of JOS  operating systems are:
 
 1. Booting
 2. Memory management
@@ -59,7 +59,7 @@ sudo apt install gcc-multilib g++-multilib
 
 ```
 
-又有报错: 
+又有报错:
 
 ```shell
 ld: warning: section `.bss' type changed to PROGBITS
@@ -72,7 +72,6 @@ ld: warning: section `.bss' type changed to PROGBITS
 ## QEMU
 
 安装qemu, sudo apt install qemu-system-x86,
-
 
 ```shell
 sudo apt install qemu qemu-system-x86
@@ -94,12 +93,15 @@ make qemu-nox-gdb // with gdb enabled
 
 ```
 
+### qemu gdb 单步调试
+
+目前还支持2个命令，是一个cli式的程序，只实现了boot, 启动到命令行界面。
+
 qemu的命令
 
 ### qemu-img
 
-    qemu-img is used to convert various file systems used by hypervisors like Xen, KVM, VMware, VirtualBox. to format guest images, add additional storage devices and network storage. The 
-
+qemu-img is used to convert various file systems used by hypervisors like Xen, KVM, VMware, VirtualBox. to format guest images, add additional storage devices and network storage. 
 
 ```
 create
@@ -138,40 +140,36 @@ qemu-system-x86_64 -m 512 -hda ~/path/virt/arch.qcow2 -cdrom ~/path/iso/CentOS-7
 ```
 
 ### qemu-io
+
 To exercise the QEMU I/O path.
 
-
-
 ### qemu-nbd
-Network block device. 
+
+Network block device.
 
 ### qemu-pr-helper
-Persistent reservation helper.
-zuowei作为一个服务，支持一个持久存储功能。
 
+Persistent reservation helper.
+作为一个服务，支持一个持久存储功能。
 
 ### qemu-storage-daemon
-
 
 ### qemu-system-i386
 
 ### qemu-system-x86_64
 
 ### qemu-system-x86_64-microvm
+
 microvm, virtual platform, a machine type inspired by Firecracker,
 
 it's a minimalist machine type without PCI nor ACPI support, designed for short-lived guests. microvm also establishes a baseline for benchmarking and optimizaing both QEMU and guest operating system. Optimized for both boot time and footpritn,
 
-
 ### qemu-system-x86_64-spice
+
 Spice protocol for virtual desktops.
-
-
 
 ## add custom c files
 
 复制wc.c
 
 添加到makefile里面去,
-
-
