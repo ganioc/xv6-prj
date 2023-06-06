@@ -47,14 +47,25 @@ ld: lib/printfmt.c:49: undefined reference to `__umoddi3'
 # 链接时, 报错。缺少求余和除法操作,
 # 可是查找libgcc.a后发现里面确实有上述2个函数,这是为什么呢？
 安装32bit libgcc.a,
-sudo apt install ia32-libs
-apt-get install gcc-4.8-multilib
 sudo apt install gcc-multilib g++-multilib
 # libgcc.a是干什么的呢？
+/usr/lib/gcc/x86_64-linux-gnu/11/32/libgcc.a
+# gcc 使用libgcc.a的支持的一些运行时函数, 包含有
+# 算术运算、逻辑运算、浮点数运算
+# Exception handling, stack unwinding
+# Thread local storage management
+# Memory allocation and deallocation,
 
 
 ```
 
+又有报错: 
+
+```shell
+ld: warning: section `.bss' type changed to PROGBITS
+
+
+```
 
 ## Tools used in 6.828
 
