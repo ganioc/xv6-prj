@@ -1,5 +1,8 @@
 {
     "files.associations": {
         "types.h": "c"
-    }
+    },
+    "markdown.occurrencesHighlight.enabled": true,
+    "notebook.showFoldingControls": "always",
+    "markdown.extension.tableFormatter.normalizeIndentation": true
 }
