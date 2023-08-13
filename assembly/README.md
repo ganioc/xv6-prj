@@ -15,3 +15,6 @@ File Permission Macors,
 - S_IWOTH
 - S_IXOTH 
 
+## Install nasm
+nasm 2.15.05
+
