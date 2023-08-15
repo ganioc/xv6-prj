@@ -54,6 +54,19 @@ r9, 6th argument
 
 $, return position in memory of string where $ defined
 $$, return position in memory of current section start
+
+# syscall
+rax # syscall number
+rdi 1, # standard output
+rsi, # message address
+rdx, # length of message
+syscall
+
+struc endstruc
+
+%include ,
 ```
+
+
 
 
