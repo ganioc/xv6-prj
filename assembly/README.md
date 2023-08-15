@@ -67,6 +67,16 @@ struc endstruc
 %include ,
 ```
 
+## gus assembly
+生成汇编文件, gcc -S , 生成了*.s汇编文件,
+
+语法确实是和nasm不一样, AT&T syntax, 
+
+## Non-integer
+fpu
+
+sse,
+
 
 
 

@@ -42,6 +42,6 @@ reverse.o: reverse.asm
 	nasm -f elf64 -o $@ $^
 
 clean:
-	rm -rf ctest hello *.o loop reverse
+	rm -rf ctest hello *.o loop reverse a.out 
 
 .PHONY: all
