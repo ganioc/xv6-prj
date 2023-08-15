@@ -22,12 +22,26 @@ CFLAGS += -Wall -Wno-format -Wno-unused -Werror -gstabs -m32
 # Common linker flags
 # LDFLAGS := -m elf_i386
 
-all: ctest
+all: ctest hello loop reverse
 
 ctest: ctest.c
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+hello: hello.o
+	ld -o hello  $^
+hello.o: hello.asm 
+	nasm -f elf64 -o hello.o $^
+
+loop: loop.o 
+	ld -o loop $^
+loop.o: loop.asm 
+	nasm -f elf64 -o $@ $^
+
+reverse: reverse.o 
+	ld -o reverse $^
+reverse.o: reverse.asm 
+	nasm -f elf64 -o $@ $^
 
 clean:
-	rm -rf ctest
+	rm -rf ctest hello *.o loop reverse
 
 .PHONY: all
