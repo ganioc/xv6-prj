@@ -33,7 +33,7 @@ struct
 
   // Linked list of all buffers, through prev/next.
   // head.next is most recently used.
-  struct b192uf head;
+  struct buf head;
 } bcache;
 
 void binit(void)
@@ -42,7 +42,6 @@ void binit(void)
 
   initlock(&bcache.lock, "bcache");
 
-  // PAGEBREAK!
   //  Create linked list of buffers
   bcache.head.prev = &bcache.head;
   bcache.head.next = &bcache.head;
@@ -144,5 +143,4 @@ void brelse(struct buf *b)
 
   release(&bcache.lock);
 }
-// PAGEBREAK!
 //  Blank page.
